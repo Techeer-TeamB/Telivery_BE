@@ -2,7 +2,7 @@
 name: Bug report
 about: 버그 및 버그 발생 상황
 title: "[BUG]"
-labels: "\U0001F41B Bug"
+labels: "\U0001F41B Bug, ✨ Feature"
 assignees: ''
 
 ---
