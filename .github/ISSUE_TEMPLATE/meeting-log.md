@@ -2,7 +2,7 @@
 name: Meeting Log
 about: 회의록
 title: "[MEET]"
-labels: ''
+labels: "\U0001F4DD Docs"
 assignees: ''
 
 ---
