@@ -1,0 +1,5 @@
+rootProject.name = 'Telivery_BE'
+include 'domain'
+include 'api'
+include 'application'
+
