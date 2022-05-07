@@ -1,6 +1,9 @@
 # Telivery_BE
 배달 서비스 클론 코딩 백엔드 Repository (Spring-Boot)
 
+## 개발자 
+신은지, 양지윤, 오현택 
+
 ## 디렉토리 구조
 
 ### /api
