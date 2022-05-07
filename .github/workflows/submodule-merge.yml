@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: https://github.com/Techeer-TeamB/Telivery
+          repository: Techeer-TeamB/Telivery
           branch: develop
           token: ${{ secrets.TOKEN_GITHUB }}
           submodules: true
