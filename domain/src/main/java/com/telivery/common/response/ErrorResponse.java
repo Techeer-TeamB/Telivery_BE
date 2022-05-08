@@ -1,6 +1,6 @@
 package com.telivery.common.response;
 
-import com.telivery.common.exception.ErrorStatus;
+import com.telivery.common.exception.ErrorCode;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,7 +11,7 @@ public class ErrorResponse {
     private String message;
 
     @Builder
-    public ErrorResponse(ErrorStatus errorStatus) {
+    public ErrorResponse(ErrorCode errorStatus) {
         this.code = errorStatus.getCode();
         this.message = errorStatus.getMessage();
     }

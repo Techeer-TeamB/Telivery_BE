@@ -3,7 +3,7 @@ package com.telivery.common.exception;
 import lombok.Getter;
 
 @Getter
-public enum ErrorStatus {
+public enum ErrorCode {
 
     /* 예시 */
     NO_DATA_IN_DB(-1, "데이터베이스에 값이 존재하지 않습니다."),
@@ -16,7 +16,7 @@ public enum ErrorStatus {
     private final int code;
     private final String message;
 
-    ErrorStatus(int code, String message) {
+    ErrorCode(int code, String message) {
         this.code = code;
         this.message = message;
     }
