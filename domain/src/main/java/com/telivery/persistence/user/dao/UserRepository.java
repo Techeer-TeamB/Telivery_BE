@@ -1,6 +1,6 @@
-package com.telivery.persistence.repository;
+package com.telivery.persistence.user.dao;
 
-import com.telivery.persistence.entity.User;
+import com.telivery.persistence.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

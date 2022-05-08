@@ -1,4 +1,4 @@
-package com.telivery.common;
+package com.telivery.common.response;
 
 import org.springframework.lang.Nullable;
 
