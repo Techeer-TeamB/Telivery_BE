@@ -1,4 +1,4 @@
-package com.telivery.exception;
+package com.telivery.common.exception;
 
 import lombok.Getter;
 

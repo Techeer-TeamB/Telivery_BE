@@ -1,4 +1,4 @@
-package com.telivery.exception;
+package com.telivery.common.exception;
 
 
 import org.springframework.http.HttpStatus;
