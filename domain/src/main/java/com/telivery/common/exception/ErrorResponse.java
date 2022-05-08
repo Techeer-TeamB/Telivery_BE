@@ -2,16 +2,17 @@ package com.telivery.common.exception;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
 @Getter
 public class ErrorResponse {
 
-    private int status;
+    private int code;
     private String message;
 
     @Builder
     public ErrorResponse(ErrorStatus errorStatus) {
-        this.status = errorStatus.getStatus();
+        this.code = errorStatus.getCode();
         this.message = errorStatus.getMessage();
     }
 }

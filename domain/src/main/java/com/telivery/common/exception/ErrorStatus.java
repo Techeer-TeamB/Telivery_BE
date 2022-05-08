@@ -13,12 +13,11 @@ public enum ErrorStatus {
     USER_NOT_FOUND(-100, "존재하지 않는 user 입니다");
 
 
-
-    private final int status;
+    private final int code;
     private final String message;
 
-    ErrorStatus(int status, String message) {
-        this.status = status;
+    ErrorStatus(int code, String message) {
+        this.code = code;
         this.message = message;
     }
 
