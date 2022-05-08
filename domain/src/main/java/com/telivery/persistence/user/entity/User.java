@@ -1,6 +1,6 @@
-package com.telivery.persistence.entity;
+package com.telivery.persistence.user.entity;
 
-import com.telivery.persistence.entity.type.Role;
+import com.telivery.persistence.user.entity.type.Role;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
