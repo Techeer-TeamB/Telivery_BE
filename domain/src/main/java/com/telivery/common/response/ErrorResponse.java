@@ -1,8 +1,8 @@
-package com.telivery.common.exception;
+package com.telivery.common.response;
 
+import com.telivery.common.exception.ErrorStatus;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
 
 @Getter
 public class ErrorResponse {

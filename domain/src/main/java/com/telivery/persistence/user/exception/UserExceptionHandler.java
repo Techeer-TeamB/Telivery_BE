@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.telivery.common.exception.ErrorResponse;
+import com.telivery.common.response.ErrorResponse;
 
 @Slf4j
 @RestControllerAdvice
