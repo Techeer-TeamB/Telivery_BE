@@ -1,5 +1,6 @@
 package com.telivery.persistence.category.application;
 
+import com.telivery.persistence.category.dto.CategoryDto.CategoryRes;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class CategoryService {
+
+  public CategoryRes findAll() {
+    return new CategoryRes(1L, "test");
+  }
+
 }
