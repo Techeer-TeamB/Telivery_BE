@@ -18,7 +18,7 @@ public class UserExceptionHandler {
     public ErrorResponse handleUserNotFoundException(UserNotFoundException ex) {
         // exception throw가 발생할 경우 log를 납깁니다.
         log.info("account not found exception", ex);
-        return new ErrorResponse(ex.getErrorStatus());
+        return new ErrorResponse(ex.getErrorCode());
     }
 
 }
