@@ -44,5 +44,6 @@ project(":application") {
 project(":api") {
     dependencies {
         api project(":domain")
+        api project(":application")
     }
 }
