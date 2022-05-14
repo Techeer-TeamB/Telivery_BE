@@ -1,5 +1,6 @@
 package com.telivery.controller.category;
 
+import com.telivery.persistence.category.dto.CategoryExampleDto;
 import com.telivery.persistence.category.entity.Category;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -22,9 +23,15 @@ public class CategoryController {
   private final CategoryService categoryService;
 
   @GetMapping
-  public ResponseEntity<List<Category>> findAll() {
-    List<Category> categoryList = categoryService.findAll();
+  public ResponseEntity<List<CategoryExampleDto>> findAll() {
+    List<CategoryExampleDto> categoryList = categoryService.findAll();
     return new ResponseEntity<>(categoryList, HttpStatus.OK);
   }
+
+//  @GetMapping
+//  public ResponseEntity<List<CategoryRes>> findAll() {
+//    List<CategoryRes> categoryList = categoryService.findAll();
+//    return new ResponseEntity<>(categoryList, HttpStatus.OK);
+//  }
 
 }
