@@ -1,5 +1,7 @@
 package com.telivery.controller.category;
 
+import com.telivery.persistence.category.entity.Category;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,9 +22,9 @@ public class CategoryController {
   private final CategoryService categoryService;
 
   @GetMapping
-  public ResponseEntity<CategoryRes> findAll() {
-    CategoryRes categoryRes = categoryService.findAll();
-    return new ResponseEntity<>(categoryRes, HttpStatus.OK);
+  public ResponseEntity<List<Category>> findAll() {
+    List<Category> categoryList = categoryService.findAll();
+    return new ResponseEntity<>(categoryList, HttpStatus.OK);
   }
 
 }
