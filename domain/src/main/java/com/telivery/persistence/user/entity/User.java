@@ -1,15 +1,18 @@
 package com.telivery.persistence.user.entity;
 
 import com.telivery.persistence.user.entity.type.Role;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity @Getter @Setter
+@Getter
+@Setter
+@Builder
+@RequiredArgsConstructor
+@Entity
 @Table(name = "users")
 public class User {
     @Id
@@ -30,6 +33,12 @@ public class User {
 
     @Column(name="password")
     private String password;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "birthday")
+    private Date birthday;
 
     @Column(name="role")
     private Role role;
