@@ -1,6 +1,7 @@
 package com.telivery.common.exception;
 
 import com.telivery.common.exception.global.BadRequestException;
+import com.telivery.common.exception.global.NoDataException;
 import com.telivery.common.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,14 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleBadRequestException(BadRequestException ex) {
         // exception throw가 발생할 경우 log를 납깁니다.
         log.info("request param omission exception", ex);
+        return new ErrorResponse(ex.getErrorCode());
+    }
+
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NoDataException.class)
+    public ErrorResponse handleNotFoundException(NoDataException ex) {
+        // exception throw가 발생할 경우 log를 납깁니다.
+        log.info("not found data exception", ex);
         return new ErrorResponse(ex.getErrorCode());
     }
 
