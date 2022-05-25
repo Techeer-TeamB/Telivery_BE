@@ -36,7 +36,7 @@ subprojects {
 
         // mapstruct
         implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-        annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+//        annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
         testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
     }
 }

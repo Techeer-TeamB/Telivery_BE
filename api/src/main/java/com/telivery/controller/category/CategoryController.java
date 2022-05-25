@@ -1,7 +1,6 @@
 package com.telivery.controller.category;
 
 import com.telivery.persistence.category.dto.CategoryExampleDto;
-import com.telivery.persistence.category.entity.Category;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.telivery.persistence.category.application.CategoryService;
-import com.telivery.persistence.category.dto.CategoryDto.CategoryRes;
 
 @Slf4j
 @RestController
@@ -28,9 +26,10 @@ public class CategoryController {
     return new ResponseEntity<>(categoryList, HttpStatus.OK);
   }
 
-//  @GetMapping
-//  public ResponseEntity<List<CategoryRes>> findAll() {
-//    List<CategoryRes> categoryList = categoryService.findAll();
+  // mapper 테스트
+//  @GetMapping("/res")
+//  public ResponseEntity<List<CategoryMapperTest>> findAllRes() {
+//    List<CategoryMapperTest> categoryList = categoryService.findAllRes();
 //    return new ResponseEntity<>(categoryList, HttpStatus.OK);
 //  }
 
