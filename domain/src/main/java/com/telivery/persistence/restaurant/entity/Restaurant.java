@@ -46,7 +46,7 @@ public class Restaurant extends BaseEntity {
   @Column
   private String description;
 
-  @Lob
+  @Column
   private String photo;
 
   @Column
