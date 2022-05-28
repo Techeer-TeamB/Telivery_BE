@@ -1,19 +1,19 @@
-package com.telivery.persistence.review;
+package com.telivery.persistence.time;
 
-import com.telivery.persistence.review.dao.ReviewRepository;
+import com.telivery.persistence.time.dao.TimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class ReviewService {
+public class TimeService {
 
-  private final ReviewRepository reviewRepository;
+  private final TimeRepository timeRepository;
 
   @Transactional(readOnly = true)
   public long countByRestaurantId(Long restaurantId) {
-    return reviewRepository.countByRestaurantId(restaurantId);
+    return timeRepository.countByRestaurantId(restaurantId);
   }
 
 }
