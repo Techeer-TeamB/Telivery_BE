@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class TimeExceptionHandler {
 
-  @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+  @ResponseStatus(value = HttpStatus.NOT_FOUND)
   @ExceptionHandler(TimeNotFoundException.class)
   public ErrorResponse handleTimeNotFoundException(TimeNotFoundException ex) {
     log.info("time not found exception", ex);
