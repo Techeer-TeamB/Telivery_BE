@@ -2,6 +2,7 @@ package com.telivery.controller.restaurant;
 
 import com.telivery.persistence.restaurant.application.RestaurantService;
 import com.telivery.persistence.restaurant.dto.RestaurantDTO;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,15 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/restaurants")
+@RequestMapping("/api/v1")
 public class RestaurantController {
 
   private final RestaurantService restaurantService;
 
-  @GetMapping("/{restaurantId}")
+  @GetMapping("/restaurants/{restaurantId}")
   public ResponseEntity<RestaurantDTO> getRestaurantInfo(
-      @PathVariable final Long restaurantId
+      @PathVariable final long restaurantId
   ) {
     return new ResponseEntity<>(restaurantService.getRestaurantInfo(restaurantId), HttpStatus.OK);
+  }
+
+  @GetMapping("/categories/{categoryId}/restaurants")
+  public void findRestaurantsByCategory(
+      @PathVariable final long categoryId
+  ) {
+
   }
 }
