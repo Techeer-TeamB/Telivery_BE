@@ -31,6 +31,6 @@ public class RestaurantController {
   public void findRestaurantsByCategory(
       @PathVariable final long categoryId
   ) {
-
+    return new ResponseEntity<>(restaurantService.findRestarurantsByCategory(categoryId), HttpStatus.OK);
   }
 }
