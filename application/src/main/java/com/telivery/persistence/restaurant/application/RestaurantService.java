@@ -24,7 +24,7 @@ public class RestaurantService {
     TimeDTO workHour = timeService.findOneByRestaurantId(restaurantId);
     Long reviewCount = reviewService.countByRestaurantId(restaurantId);
 
-    return new RestaurantDTO(restaurant, workHour, reviewCount);
+    return RestaurantDTO.builder().restaurant(restaurant).workHour(workHour).reviewCount(reviewCount).build();
   }
 
 }
