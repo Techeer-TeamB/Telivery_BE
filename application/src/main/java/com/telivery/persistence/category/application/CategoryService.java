@@ -28,7 +28,7 @@ public class CategoryService {
     public List<CategoryMapperTest> findAllRes() {
     List<Category> categoryList = categoryRepo.findAll();
     if (categoryList.isEmpty()) throw new NoDataException();
-      return CategoryMapper.INSTANCE.mapCategoryToRes(categoryList);
+    return CategoryMapper.INSTANCE.mapCategoryToRes(categoryList);
   }
 
 }
