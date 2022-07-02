@@ -12,6 +12,7 @@ import com.telivery.persistence.time.dto.TimeDTO;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,10 +38,16 @@ public class RestaurantService {
     return RestaurantDTO.builder().restaurant(restaurant).workHour(workHour).reviewCount(reviewCount).build();
   }
 
-  public List<RestaurantInfoDTO> findRestarurantsByCategory(long categoryId) {
-    List<RestaurantInfoDTO> restaurantInfoDTOs = new ArrayList<>();
+  @Cacheable(value="restaurants", key = "#categoryId", unless="#result == null")
+  public List<Restaurant> findByCategory(long categoryId) {
     List<Restaurant> restaurants = restaurantRepository.findByCategoryId(categoryId);
     if (restaurants.isEmpty()) throw new NoDataException();
+    return restaurants;
+  }
+
+  public List<RestaurantInfoDTO> findRestarurantsByCategory(long categoryId) {
+    List<RestaurantInfoDTO> restaurantInfoDTOs = new ArrayList<>();
+    List<Restaurant> restaurants = findByCategory(categoryId);
 
     for (Restaurant restaurant : restaurants) {
       long reviewCount = reviewService.countByRestaurantId(restaurant.getId());
