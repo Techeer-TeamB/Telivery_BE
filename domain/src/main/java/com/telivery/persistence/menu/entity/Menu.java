@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -54,5 +53,9 @@ public class Menu extends BaseEntity {
 
   @Column(length = 30)
   private String status;
+
+  @NotNull
+  @Column(name = "has_option")
+  private Boolean hasOption;
 
 }

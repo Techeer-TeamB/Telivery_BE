@@ -12,6 +12,14 @@ public enum ErrorCode {
     /* User */
     USER_NOT_FOUND(-100, "존재하지 않는 user 입니다"),
 
+    /* Restaurant */
+    RESTAURANT_ID_NOT_FOUND(-200, "존재하지 않는 restaurant 입니다."),
+
+    /* Menu */
+    MENU_ID_NOT_FOUND(-300, "존재하지 않는 메뉴 입니다."),
+    NO_MENU_IN_RESTAURANT(-301, "요청 식당에 메뉴가 존재하지 않습니다."),
+    NO_OPTION_IN_MENU(-302, "요청 메뉴에 옵션이 존재하지 않습니다."),
+
     /* Time */
     TIME_NOT_FOUND(-400, "가게에 영업시간 정보가 존재하지 않습니다.");
 
