@@ -1,11 +1,13 @@
 package com.telivery.persistence.menu.application;
 
 import com.telivery.persistence.menu.dao.MenuRepository;
+import com.telivery.persistence.menu.dto.MenuDTO.MenuRes;
 import com.telivery.persistence.menu.entity.Menu;
 import com.telivery.persistence.menu.exception.MenuIdNotFoundException;
 import com.telivery.persistence.menu.exception.NoMenuInRestaurantException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,11 @@ public class MenuService {
     List<Menu> menuList = menuRepository.findByRestaurant(restaurantId);
     if (menuList.isEmpty()) throw new NoMenuInRestaurantException();
     return menuList;
+  }
+
+  public List<MenuRes> findMenuResByRestaurant(long restaurantId) {
+    List<Menu> menuList = findByRestaurant(restaurantId);
+    return menuList.stream().map(MenuRes::new).collect(Collectors.toList());
   }
 
 }
