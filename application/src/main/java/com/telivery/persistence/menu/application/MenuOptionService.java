@@ -16,7 +16,7 @@ public class MenuOptionService {
   private final MenuOptionRepository menuOptionRepository;
 
   public List<MenuOption> findByMenu(long menuId) {
-    List<MenuOption> menuOptionList = menuOptionRepository.findAllByMenu(menuId);
+    List<MenuOption> menuOptionList = menuOptionRepository.findAllByMenuId(menuId);
     if (menuOptionList.isEmpty()) throw new NoOptionInMenuException();
     return menuOptionList;
   }

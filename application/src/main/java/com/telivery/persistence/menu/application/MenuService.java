@@ -26,7 +26,7 @@ public class MenuService {
   }
 
   public List<Menu> findByRestaurant(long restaurantId) {
-    List<Menu> menuList = menuRepository.findByRestaurant(restaurantId);
+    List<Menu> menuList = menuRepository.findByRestaurantId(restaurantId);
     if (menuList.isEmpty()) throw new NoMenuInRestaurantException();
     return menuList;
   }

@@ -9,6 +9,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface MenuRepository extends PagingAndSortingRepository<Menu, Long>,
     JpaRepository<Menu, Long> {
 
-  List<Menu> findByRestaurant(long restaurantId);
+  List<Menu> findByRestaurantId(long restaurantId);
 
 }

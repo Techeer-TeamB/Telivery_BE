@@ -8,6 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface MenuOptionRepository extends PagingAndSortingRepository<MenuOption, Long>,
     JpaRepository<MenuOption, Long> {
 
-  List<MenuOption> findAllByMenu(long menuId);
+  List<MenuOption> findAllByMenuId(long menuId);
 
 }
