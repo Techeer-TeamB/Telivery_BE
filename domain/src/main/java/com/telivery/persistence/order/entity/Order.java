@@ -1,5 +1,6 @@
 package com.telivery.persistence.order.entity;
 
+import com.sun.istack.NotNull;
 import com.telivery.common.domain.BaseEntity;
 import com.telivery.persistence.category.entity.Category;
 import com.telivery.persistence.restaurant.entity.Restaurant;
@@ -17,7 +18,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.relational.core.sql.In;
 
 @Getter
 @Entity
@@ -40,11 +40,12 @@ public class Order extends BaseEntity {
   @Column(length = 30)
   private Status status;
 
+  @NotNull
   @Column(name = "total_price")
-  private Integer totalPrice;
+  private int totalPrice;
 
   @Builder
-  public Order(User user, Restaurant restaurant, Status status, Integer totalPrice) {
+  public Order(User user, Restaurant restaurant, Status status, int totalPrice) {
     this.user = user;
     this.restaurant = restaurant;
     this.status = status;
