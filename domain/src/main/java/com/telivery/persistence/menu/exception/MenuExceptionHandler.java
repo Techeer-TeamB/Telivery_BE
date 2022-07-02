@@ -27,4 +27,12 @@ public class MenuExceptionHandler {
     return new ErrorResponse(ex.getErrorCode());
   }
 
+  // 메뉴에 옵션 존재하지 않을 경우의 exception
+  @ResponseStatus(value = HttpStatus.NOT_FOUND)
+  @ExceptionHandler(NoOptionInMenuException.class)
+  public ErrorResponse handleNoOptionInMenuException(NoOptionInMenuException ex) {
+    log.info("No option in menu exception", ex);
+    return new ErrorResponse(ex.getErrorCode());
+  }
+
 }
