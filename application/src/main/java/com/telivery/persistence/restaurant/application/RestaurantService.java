@@ -5,6 +5,7 @@ import com.telivery.persistence.restaurant.dao.RestaurantRepository;
 import com.telivery.persistence.restaurant.dto.RestaurantDTO;
 import com.telivery.persistence.restaurant.dto.RestaurantInfoDTO;
 import com.telivery.persistence.restaurant.entity.Restaurant;
+import com.telivery.persistence.restaurant.exception.RestaurantIdNotFoundException;
 import com.telivery.persistence.review.application.ReviewService;
 import com.telivery.persistence.time.application.TimeService;
 import com.telivery.persistence.time.dto.TimeDTO;
@@ -20,6 +21,12 @@ public class RestaurantService {
   private final TimeService timeService;
   private final ReviewService reviewService;
   private final RestaurantRepository restaurantRepository;
+
+  public Restaurant findById(long restaurantId) {
+    Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow(
+        RestaurantIdNotFoundException::new);
+    return restaurant;
+  }
 
   public RestaurantDTO getRestaurantInfo(long restaurantId) {
     Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow(

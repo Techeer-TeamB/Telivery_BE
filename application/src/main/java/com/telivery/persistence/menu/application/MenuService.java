@@ -5,6 +5,8 @@ import com.telivery.persistence.menu.dto.MenuDTO.MenuRes;
 import com.telivery.persistence.menu.entity.Menu;
 import com.telivery.persistence.menu.exception.MenuIdNotFoundException;
 import com.telivery.persistence.menu.exception.NoMenuInRestaurantException;
+import com.telivery.persistence.restaurant.application.RestaurantService;
+import com.telivery.persistence.restaurant.entity.Restaurant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 public class MenuService {
 
   private final MenuRepository menuRepository;
+  private final RestaurantService restaurantService;
 
   public Menu findById(long id) {
     Menu menu = menuRepository.findById(id).orElseThrow(MenuIdNotFoundException::new);
