@@ -21,7 +21,7 @@ public class MenuDTO {
     private String description;
     private int price;
     private String photo;
-    private boolean hasOption;
+    private Boolean hasOption;
 
     public MenuRes(Menu menu) {
       this.id = menu.getId();

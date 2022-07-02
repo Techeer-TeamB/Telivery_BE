@@ -32,7 +32,7 @@ public class MenuOption extends BaseEntity {
 
   @NotNull
   @Column(name = "is_essential")
-  private boolean isEssential;
+  private Boolean isEssential;
 
   @Column(length = 50)
   private String name;
