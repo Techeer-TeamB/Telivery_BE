@@ -1,10 +1,8 @@
-package com.telivery.persistence.order.entity;
+package com.telivery.persistence.menu.entity;
 
 import com.sun.istack.NotNull;
 import com.telivery.common.domain.BaseEntity;
 import com.telivery.persistence.category.entity.Category;
-import com.telivery.persistence.restaurant.entity.Restaurant;
-import com.telivery.persistence.user.entity.User;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,40 +13,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@Table(name = "order")
+@Table(name = "menu_option")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Order extends BaseEntity {
+public class MenuOption extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
-  private User user;
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "restaurant_id")
-  private Restaurant restaurant;
-
-  @Column(length = 30)
-  private Status status;
+  @JoinColumn(name = "menu_id")
+  private Menu menu;
 
   @NotNull
-  @Column(name = "total_price")
-  private int totalPrice;
+  @Column(name = "is_essential")
+  private boolean isEssential;
 
-  @Builder
-  public Order(User user, Restaurant restaurant, Status status, int totalPrice) {
-    this.user = user;
-    this.restaurant = restaurant;
-    this.status = status;
-    this.totalPrice = totalPrice;
-  }
+  @Column(length = 50)
+  private String name;
+
+  @NotNull
+  private int price;
+
 }

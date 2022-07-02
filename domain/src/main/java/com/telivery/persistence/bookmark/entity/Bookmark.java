@@ -1,8 +1,7 @@
-package com.telivery.persistence.order.entity;
+package com.telivery.persistence.bookmark.entity;
 
-import com.sun.istack.NotNull;
+import com.fasterxml.jackson.databind.ser.Serializers.Base;
 import com.telivery.common.domain.BaseEntity;
-import com.telivery.persistence.category.entity.Category;
 import com.telivery.persistence.restaurant.entity.Restaurant;
 import com.telivery.persistence.user.entity.User;
 import javax.persistence.Column;
@@ -21,9 +20,9 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@Table(name = "order")
+@Table(name = "bookmark")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Order extends BaseEntity {
+public class Bookmark extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,18 +36,10 @@ public class Order extends BaseEntity {
   @JoinColumn(name = "restaurant_id")
   private Restaurant restaurant;
 
-  @Column(length = 30)
-  private Status status;
-
-  @NotNull
-  @Column(name = "total_price")
-  private int totalPrice;
-
   @Builder
-  public Order(User user, Restaurant restaurant, Status status, int totalPrice) {
+  public Bookmark(User user, Restaurant restaurant) {
     this.user = user;
     this.restaurant = restaurant;
-    this.status = status;
-    this.totalPrice = totalPrice;
   }
+
 }
