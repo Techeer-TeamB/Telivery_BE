@@ -1,5 +1,6 @@
 package com.telivery.persistence.menu.entity;
 
+import com.sun.istack.NotNull;
 import com.telivery.common.domain.BaseEntity;
 import com.telivery.persistence.category.entity.Category;
 import com.telivery.persistence.restaurant.entity.Restaurant;
@@ -42,6 +43,7 @@ public class Menu extends BaseEntity {
   @Column(length = 50)
   private String name;
 
+  @NotNull
   private int price;
 
   @Column(length = 255)
