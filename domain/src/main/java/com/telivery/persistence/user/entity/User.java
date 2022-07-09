@@ -21,6 +21,9 @@ public class User extends BaseEntity {
     @Column(length = 30, unique = true, nullable = false)
     private String username;
 
+    @Embedded
+    private Password password;
+
     @Column(length = 13)
     private String phone;
 
