@@ -10,7 +10,9 @@ public enum ErrorCode {
     OMISSION_REQUIRE_PARAM(-2, "request 파라미터가 누락되었습니다."),
 
     /* User */
-    USER_NOT_FOUND(-100, "존재하지 않는 user 입니다");
+    USER_NOT_FOUND(-100, "존재하지 않는 user 입니다"),
+    TOKEN_NOT_FOUND(-101, "토큰이 존재하지 않습니다."),
+    EXPIRED_TOKEN(-102, "만료된 토큰입니다.");
 
 
     private final int code;
