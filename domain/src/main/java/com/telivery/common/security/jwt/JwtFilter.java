@@ -19,8 +19,6 @@ public class JwtFilter extends OncePerRequestFilter {
 
   private final JwtProvider jwtTokenProvider;
 
-  public static final String AUTHORIZATION_HEADER = "Authorization";
-
   @Override
   public void doFilterInternal(HttpServletRequest httpServletRequest,
       HttpServletResponse httpServletResponse, FilterChain filterChain)
@@ -43,6 +41,13 @@ public class JwtFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(auth);
       }
     }
+
+    // 토큰이 없다면 exception
+    else {
+      httpServletRequest.setAttribute("exception", ErrorCode.TOKEN_NOT_FOUND.getCode());
+    }
+
+    filterChain.doFilter(httpServletRequest, httpServletResponse);
 
   }
 
