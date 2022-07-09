@@ -1,6 +1,7 @@
 package com.telivery.persistence.user.entity;
 
 import com.telivery.common.domain.BaseEntity;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -17,6 +18,9 @@ public class User extends BaseEntity {
     @GeneratedValue
     @Column(name="id")
     private Long id;
+
+    @Column(name = "role")
+    Authority authorities;
 
     @Column(length = 30, unique = true, nullable = false)
     private String username;
