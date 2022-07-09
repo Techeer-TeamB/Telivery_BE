@@ -20,7 +20,7 @@ public class User extends BaseEntity {
     private Long id;
 
     @Column(name = "role")
-    Authority authorities;
+    Role role;
 
     @Column(length = 30, unique = true, nullable = false)
     private String username;

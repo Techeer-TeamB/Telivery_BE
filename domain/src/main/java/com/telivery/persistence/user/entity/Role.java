@@ -2,7 +2,7 @@ package com.telivery.persistence.user.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum Authority implements GrantedAuthority {
+public enum Role implements GrantedAuthority {
   ROLE_ADMIN,
   ROLE_USER;
 
