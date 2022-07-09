@@ -17,12 +17,8 @@ public class Password {
   private String value;
 
   @Builder
-  public Password(final String value) {
-    this.value = value;
-  }
-
-  public void encodePassword(final String password) {
-    this.value = new BCryptPasswordEncoder().encode(password);
+  public Password(final String password) {
+    this.value = new BCryptPasswordEncoder().encode(value);
   }
 
   public boolean isMatched(final String rawPassword) {
