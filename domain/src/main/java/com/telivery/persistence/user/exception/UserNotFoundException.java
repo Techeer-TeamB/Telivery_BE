@@ -7,9 +7,9 @@ import lombok.Getter;
 @Getter
 public class UserNotFoundException extends RuntimeException {
 
-    private final ErrorCode errorStatus;
+    private final ErrorCode errorCode;
 
-    public UserNotFoundException() { this.errorStatus = ErrorCode.USER_NOT_FOUND; }
+    public UserNotFoundException() { this.errorCode = ErrorCode.USER_NOT_FOUND; }
 
 
 }

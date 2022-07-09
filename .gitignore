@@ -36,4 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 application-jwt.properties
-application-jwt.properties
+
+### application.yaml ###
+**/application.yaml
