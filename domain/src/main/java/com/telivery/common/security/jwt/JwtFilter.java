@@ -17,7 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-  private final JwtProvider jwtTokenProvider;
+  private final JwtProvider jwtProvider;
 
   @Override
   public void doFilterInternal(HttpServletRequest httpServletRequest,
@@ -25,18 +25,18 @@ public class JwtFilter extends OncePerRequestFilter {
       throws ServletException, IOException {
 
     // header에서 accessToken 확인
-    String accessToken = jwtTokenProvider.resolveToken(httpServletRequest);
+    String accessToken = jwtProvider.resolveToken(httpServletRequest);
     if (accessToken != null) {
       // Access Token이 만료된 경우
-      if (jwtTokenProvider.isTokenExpired(accessToken)) {
+      if (jwtProvider.isTokenExpired(accessToken)) {
         httpServletRequest.setAttribute("exception", ErrorCode.EXPIRED_TOKEN.getCode());
         throw new JwtException("access token already expired");
       }
 
       // Access Token 이 유효한데 권한이 아직 없다면
-      else if (jwtTokenProvider.validateToken(accessToken)
+      else if (jwtProvider.validateToken(accessToken)
           && SecurityContextHolder.getContext().getAuthentication() == null) {
-        Authentication auth = jwtTokenProvider.getAuthentication(accessToken);
+        Authentication auth = jwtProvider.getAuthentication(accessToken);
         // 토큰에 권한 부여한 후 securityContext에 저장
         SecurityContextHolder.getContext().setAuthentication(auth);
       }
