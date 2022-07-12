@@ -14,7 +14,7 @@ public class UserDto {
   @NoArgsConstructor(access = AccessLevel.PROTECTED)
   public static class UserReq {
 
-    private String ID;
+    private String username;
     private String password;
     private String name;
     private String email;
@@ -23,7 +23,7 @@ public class UserDto {
     public User toEntity(UserReq userReq) {
       Password newPassword = Password.builder().password(userReq.getPassword()).build();
       return User.builder()
-          .username(userReq.getID())
+          .username(userReq.getUsername())
           .password(newPassword)
           .role(Role.ROLE_USER)
           .name(userReq.getName())
@@ -38,7 +38,7 @@ public class UserDto {
   @NoArgsConstructor(access = AccessLevel.PROTECTED)
   public static class UserRes {
 
-    private String ID;
+    private String username;
     private String name;
     private String email;
     private String phone;
@@ -47,7 +47,7 @@ public class UserDto {
     private Integer point;
 
     public UserRes(User user) {
-      this.ID = user.getUsername();
+      this.username = user.getUsername();
       this.name = user.getName();
       this.email = user.getEmail();
       this.phone = user.getPhone();
