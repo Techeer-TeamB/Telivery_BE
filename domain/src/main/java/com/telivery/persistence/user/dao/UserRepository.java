@@ -12,4 +12,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
     Optional<User> findById(Long id);
+    boolean existsByUsername(String username);
+    boolean existsByName(String name);
 }

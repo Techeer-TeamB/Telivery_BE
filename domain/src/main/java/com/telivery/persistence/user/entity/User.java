@@ -41,7 +41,7 @@ public class User extends BaseEntity {
     private String address;
 
     @Column(length = 20, name = "class")
-    private String gradle;
+    private String grade;
 
     private Integer point;
 

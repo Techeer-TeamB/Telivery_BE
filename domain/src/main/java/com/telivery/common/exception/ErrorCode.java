@@ -13,7 +13,9 @@ public enum ErrorCode {
     USER_NOT_FOUND(-100, "존재하지 않는 user 입니다"),
     TOKEN_NOT_FOUND(-101, "토큰이 존재하지 않습니다."),
     EXPIRED_TOKEN(-102, "만료된 토큰입니다."),
-    ACCOUNT_ACCESS_DENIED(-103, "사용자에게 필요 권한이 존재하지 않습니다."),
+    USER_ACCESS_DENIED(-103, "사용자에게 필요 권한이 존재하지 않습니다."),
+    USERNAME_DUPLICATE(-104, "이미 존재하는 ID 입니다."),
+    NAME_DUPLICATE(-105, "이미 존재하는 이름 입니다."),
 
     /* Restaurant */
     RESTAURANT_ID_NOT_FOUND(-200, "존재하지 않는 restaurant 입니다."),
