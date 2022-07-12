@@ -39,3 +39,4 @@ application-jwt.properties
 
 ### application.yaml ###
 **/application.yaml
+application.yaml
