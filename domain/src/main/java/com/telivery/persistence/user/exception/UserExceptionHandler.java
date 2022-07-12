@@ -21,4 +21,18 @@ public class UserExceptionHandler {
         return new ErrorResponse(ex.getErrorCode());
     }
 
+    @ResponseStatus(value = HttpStatus.CONFLICT)
+    @ExceptionHandler(UsernameDuplicateException.class)
+    public ErrorResponse handleUsernameDuplicateException(UsernameDuplicateException ex) {
+        log.info("username duplicate exception", ex);
+        return new ErrorResponse(ex.getErrorCode());
+    }
+
+    @ResponseStatus(value = HttpStatus.CONFLICT)
+    @ExceptionHandler(NameDuplicateException.class)
+    public ErrorResponse handleNameDuplicateException(NameDuplicateException ex) {
+        log.info("name duplicate exception", ex);
+        return new ErrorResponse(ex.getErrorCode());
+    }
+
 }

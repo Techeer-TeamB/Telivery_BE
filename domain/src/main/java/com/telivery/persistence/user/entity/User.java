@@ -1,36 +1,55 @@
 package com.telivery.persistence.user.entity;
 
-import com.telivery.persistence.user.entity.type.Role;
+import com.telivery.common.domain.BaseEntity;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.util.Date;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@Entity @Getter @Setter
-@Table(name = "users")
-public class User {
+@Getter
+@Entity
+@Builder
+@Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
+public class User extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name="id")
     private Long id;
 
-    @CreatedDate
-    @Column(name="createdAt")
-    private Date createdAt;
+    @Column(name = "role")
+    Role role;
 
-    @UpdateTimestamp
-    @Column(name="updatedAt")
-    private Date updatedAt;
+    @Column(length = 30)
+    private String name;
 
-    @Column(name="email")
+    @Column(length = 30, unique = true, nullable = false)
+    private String username;
+
+    @Embedded
+    private Password password;
+
+    @Column(length = 13)
+    private String phone;
+
+    @Column()
     private String email;
 
-    @Column(name="password")
-    private String password;
+    @Column()
+    private String address;
 
-    @Column(name="role")
-    private Role role;
+    @Column(length = 20, name = "class")
+    private String grade;
+
+    private Integer point;
+
+    private Float lat;
+
+    private Float lng;
+
 }
