@@ -2,17 +2,20 @@ package com.telivery.persistence.user.entity;
 
 import com.telivery.common.domain.BaseEntity;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@Builder
-@RequiredArgsConstructor
 @Entity
+@Builder
 @Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
 public class User extends BaseEntity {
     @Id
     @GeneratedValue
