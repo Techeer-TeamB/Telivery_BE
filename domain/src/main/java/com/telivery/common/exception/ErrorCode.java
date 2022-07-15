@@ -16,6 +16,8 @@ public enum ErrorCode {
     USER_ACCESS_DENIED(-103, "사용자에게 필요 권한이 존재하지 않습니다."),
     USERNAME_DUPLICATE(-104, "이미 존재하는 ID 입니다."),
     NAME_DUPLICATE(-105, "이미 존재하는 이름 입니다."),
+    INPUT_PASSWORD_WRONG(-106, "비밀번호가 틀립니다."),
+    INTERNAL_AUTHENTICATE_FAILED(-107, "내부 인증 관련 처리에 실패했습니다."),
 
     /* Restaurant */
     RESTAURANT_ID_NOT_FOUND(-200, "존재하지 않는 restaurant 입니다."),
