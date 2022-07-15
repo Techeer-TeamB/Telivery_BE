@@ -17,7 +17,7 @@ public class UserExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ErrorResponse handleUserNotFoundException(UserNotFoundException ex) {
         // exception throw가 발생할 경우 log를 납깁니다.
-        log.info("account not found exception", ex);
+        log.info("user not found exception", ex);
         return new ErrorResponse(ex.getErrorCode());
     }
 
@@ -32,6 +32,13 @@ public class UserExceptionHandler {
     @ExceptionHandler(NameDuplicateException.class)
     public ErrorResponse handleNameDuplicateException(NameDuplicateException ex) {
         log.info("name duplicate exception", ex);
+        return new ErrorResponse(ex.getErrorCode());
+    }
+
+    @ResponseStatus(value = HttpStatus.CONFLICT)
+    @ExceptionHandler(CustomBadCredentialException.class)
+    public ErrorResponse handleBadCredentialException(CustomBadCredentialException ex) {
+        log.info("input password is wrong exception", ex);
         return new ErrorResponse(ex.getErrorCode());
     }
 
