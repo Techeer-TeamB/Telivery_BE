@@ -5,13 +5,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class UserAdapter extends org.springframework.security.core.userdetails.User {
 
-  private static final long serialVersionUID = 1L;
-  private final User account;
+  private final User user;
 
   private UserAdapter(User user) {
     super(user.getUsername(), user.getPassword().getValue(),
         Collections.singleton(new SimpleGrantedAuthority(user.getRole().getAuthority())));
-    this.account = user;
+    this.user = user;
   }
 
   public static UserAdapter makeAdaptor(User user) {
@@ -19,7 +18,7 @@ public class UserAdapter extends org.springframework.security.core.userdetails.U
   }
 
   public User getAccount() {
-    return account;
+    return user;
   }
 
 }
