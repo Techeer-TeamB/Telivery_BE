@@ -1,5 +1,8 @@
 package com.telivery.common.security.jwt;
 
+import com.telivery.persistence.user.dao.UserRepository;
+import com.telivery.persistence.user.entity.User;
+import com.telivery.persistence.user.entity.UserAdapter;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -11,6 +14,7 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
@@ -23,7 +27,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -32,6 +36,8 @@ import org.springframework.util.StringUtils;
 @RequiredArgsConstructor
 @PropertySource("classpath:/application-jwt.properties")
 public class JwtProvider {
+
+  private final UserRepository userRepository;
 
   @Value("${security.jwt.token.secret-key}")
   private String secretKey;
@@ -67,8 +73,9 @@ public class JwtProvider {
         Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
             .map(SimpleGrantedAuthority::new)
             .collect(Collectors.toList());
-    User principal = new User(claims.getSubject(), "", authorities);
-    return new UsernamePasswordAuthenticationToken(principal, token, authorities);
+    String username = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Account [" + username + "] not found exception"));
+    return new UsernamePasswordAuthenticationToken(UserAdapter.makeAdaptor(user), token, authorities);
   }
 
   public boolean validateToken(String token) {

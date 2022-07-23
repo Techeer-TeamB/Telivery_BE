@@ -1,6 +1,7 @@
 package com.telivery.persistence.user.entity;
 
 import com.telivery.common.domain.BaseEntity;
+import io.jsonwebtoken.Claims;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

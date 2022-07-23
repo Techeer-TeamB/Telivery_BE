@@ -34,8 +34,10 @@ public class AuthService {
 
   // DESCRIBE: 새로운 user 생성 - 회원가입
   public UserRes create(UserReq userReq) {
-    if (userService.isExistedUsername(userReq.getUsername())) throw new UsernameDuplicateException();
-    if (userService.isExistedName(userReq.getName())) throw new NameDuplicateException();
+    if (userService.isExistedUsername(userReq.getUsername()))
+      throw new UsernameDuplicateException();
+    if (userService.isExistedName(userReq.getName()))
+      throw new NameDuplicateException();
     return new UserRes(userRepository.save(userReq.toEntity(userReq)));
   }
 
