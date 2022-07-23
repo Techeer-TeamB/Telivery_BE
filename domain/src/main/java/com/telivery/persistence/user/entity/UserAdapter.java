@@ -17,7 +17,7 @@ public class UserAdapter extends org.springframework.security.core.userdetails.U
     return new UserAdapter(user);
   }
 
-  public User getAccount() {
+  public User getUser() {
     return user;
   }
 
