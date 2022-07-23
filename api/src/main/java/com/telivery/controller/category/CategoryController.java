@@ -25,6 +25,7 @@ public class CategoryController {
   @GetMapping
   public ResponseEntity<List<CategoryExampleDto>> findAll(@CurrentUser User user) {
     System.out.println("로그인 유저 : "+user.getUsername());
+    System.out.println("로그인 유저 PK : "+user.getId());
     List<CategoryExampleDto> categoryList = categoryService.findAll();
     return new ResponseEntity<>(categoryList, HttpStatus.OK);
   }
