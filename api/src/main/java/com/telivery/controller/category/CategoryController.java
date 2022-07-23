@@ -30,11 +30,4 @@ public class CategoryController {
     return new ResponseEntity<>(categoryList, HttpStatus.OK);
   }
 
-  // mapper 테스트
-//  @GetMapping("/res")
-//  public ResponseEntity<List<CategoryMapperTest>> findAllRes() {
-//    List<CategoryMapperTest> categoryList = categoryService.findAllRes();
-//    return new ResponseEntity<>(categoryList, HttpStatus.OK);
-//  }
-
 }
