@@ -39,13 +39,15 @@ public class ReviewDTO {
 
     private String userName;
     private Float score;
+    private Float restaurantScore;
     private String description;
     private List<String> orderList;
 
     @Builder
-    public ReviewRes(Review review, List<String> orderList) {
+    public ReviewRes(Review review, List<String> orderList, Float restaurantScore) {
       this.userName = review.getUser().getName();
       this.score = review.getScore();
+      this.restaurantScore = restaurantScore;
       this.description = review.getDescription();
       this.orderList = orderList;
     }
