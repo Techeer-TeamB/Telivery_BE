@@ -18,7 +18,7 @@ public class ReviewDTO {
 
     private String description;
     private String photo;
-    private Integer score;
+    private Float score;
 
     public Review toEntity(User user, Restaurant restaurant, Order order) {
       return Review.builder()
@@ -38,7 +38,7 @@ public class ReviewDTO {
   public static class ReviewRes {
 
     private String userName;
-    private Integer score;
+    private Float score;
     private String description;
     private List<String> orderList;
 

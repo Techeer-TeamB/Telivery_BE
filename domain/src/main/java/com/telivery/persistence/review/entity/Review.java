@@ -50,11 +50,11 @@ public class Review extends BaseEntity {
   private String photo;
 
   @Column
-  private Integer score;
+  private Float score;
 
   @Builder
   public Review(User user, Order order, Restaurant restaurant, String description, String photo,
-      Integer score) {
+      Float score) {
     this.user = user;
     this.order = order;
     this.restaurant = restaurant;

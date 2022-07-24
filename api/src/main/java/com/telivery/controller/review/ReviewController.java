@@ -1,6 +1,10 @@
 package com.telivery.controller.review;
 
 import com.telivery.controller.user.CurrentUser;
+import com.telivery.persistence.order.application.OrderService;
+import com.telivery.persistence.order.entity.Order;
+import com.telivery.persistence.restaurant.application.RestaurantService;
+import com.telivery.persistence.restaurant.entity.Restaurant;
 import com.telivery.persistence.review.application.ReviewService;
 import com.telivery.persistence.review.dto.ReviewDTO.ReviewReq;
 import com.telivery.persistence.review.dto.ReviewDTO.ReviewRes;
@@ -22,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReviewController {
 
   private final ReviewService reviewService;
+  private final RestaurantService restaurantService;
+  private final OrderService orderService;
 
   @PostMapping(value = "/restaurants/{restaurantId}/orders/{orderId}/review")
   public ResponseEntity<ReviewRes> create(
@@ -30,7 +36,9 @@ public class ReviewController {
       @PathVariable final long orderId,
       @RequestBody final ReviewReq reviewReq
   ) {
-    return new ResponseEntity<>(reviewService.create(user, restaurantId, orderId, reviewReq), HttpStatus.OK);
+    Restaurant restaurant = restaurantService.findById(restaurantId);
+    Order order = orderService.findByIdAndUser(orderId, user.getId());
+    return new ResponseEntity<>(reviewService.create(user, restaurant, order, reviewReq), HttpStatus.OK);
   }
 
 }

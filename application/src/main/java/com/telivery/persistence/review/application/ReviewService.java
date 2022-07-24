@@ -24,8 +24,6 @@ public class ReviewService {
 
   private final ReviewRepository reviewRepository;
   private final OrderMenuRepository orderMenuRepository;
-  private final RestaurantService restaurantService;
-  private final OrderService orderService;
 
   @Transactional(readOnly = true)
   public long countByRestaurantId(Long restaurantId) {
@@ -33,18 +31,18 @@ public class ReviewService {
   }
 
   @Transactional(readOnly = true)
-  public ReviewRes create(User user, long restaurantId, long orderId, ReviewReq reviewReq) {
+  public ReviewRes create(User user, Restaurant restaurant, Order order, ReviewReq reviewReq) {
     // DESCRIBE: 리뷰 생성
-    Restaurant restaurant = restaurantService.findById(restaurantId);
-    Order order = orderService.findByIdAndUser(orderId, user.getId());
     Review review = reviewReq.toEntity(user, restaurant, order);
     reviewRepository.save(review);
 
     // DESCRIBE: 생성한 리뷰의 평점을 이용, 가게 평점 업데이트
+    long reviewCnt = countByRestaurantId(restaurant.getId());
+    restaurant.updateScore(review.getScore(), reviewCnt);
 
     // DESCRIBE: 주문 메뉴 리스트 확인
     List<String> menuList = new ArrayList<>();
-    List<OrderMenu> orderMenus = orderMenuRepository.findByOrderId(orderId);
+    List<OrderMenu> orderMenus = orderMenuRepository.findByOrderId(order.getId());
     if (!orderMenus.isEmpty()) menuList = orderMenus.stream().map(OrderMenu::getName).collect(
         Collectors.toList());
 
