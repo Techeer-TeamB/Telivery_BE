@@ -77,5 +77,9 @@ public class Restaurant extends BaseEntity {
     this.minOrder = minOrder;
   }
 
+  public void updateScore(Float reviewScore, long reviewCnt) {
+    this.score = (reviewCnt <= 1) ? reviewScore : (score * (reviewCnt-1) + reviewScore) / reviewCnt;
+  }
+
 
 }

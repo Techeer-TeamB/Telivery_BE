@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class RestaurantExceptionHandler {
 
-
   // restaurant pk가 존재하지 않을 경우의 exception
   @ResponseStatus(value = HttpStatus.NOT_FOUND)
   @ExceptionHandler(RestaurantIdNotFoundException.class)
