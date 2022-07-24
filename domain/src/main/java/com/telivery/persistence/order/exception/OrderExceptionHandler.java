@@ -19,4 +19,12 @@ public class OrderExceptionHandler {
     return new ErrorResponse(ex.getErrorCode());
   }
 
+  // 요청 유저의 주문이 아닌 경우의 exception
+  @ResponseStatus(value = HttpStatus.NOT_FOUND)
+  @ExceptionHandler(IsNotUserOrderException.class)
+  public ErrorResponse handleIsNotUserOrderException(IsNotUserOrderException ex) {
+    log.info("is not user's order exception", ex);
+    return new ErrorResponse(ex.getErrorCode());
+  }
+
 }

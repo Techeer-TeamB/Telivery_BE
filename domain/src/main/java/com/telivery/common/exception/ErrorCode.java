@@ -31,7 +31,8 @@ public enum ErrorCode {
     TIME_NOT_FOUND(-400, "가게에 영업시간 정보가 존재하지 않습니다."),
 
     /* Order, Order_list, Order_menu */
-    ORDER_ID_NOT_FOUND(-500, "존재하지 않는 주문 입니다.");
+    ORDER_ID_NOT_FOUND(-500, "존재하지 않는 주문 입니다."),
+    IS_NOT_USER_ORDER(-501, "요청한 유저의 리뷰가 아닙니다.");
 
 
     private final int code;

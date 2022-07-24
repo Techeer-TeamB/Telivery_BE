@@ -20,14 +20,14 @@ public class ReviewDTO {
     private String photo;
     private Integer score;
 
-    public Review toEntity(User user, Order order, Restaurant restaurant, ReviewReq reviewReq) {
+    public Review toEntity(User user, Restaurant restaurant, Order order) {
       return Review.builder()
           .user(user)
           .order(order)
           .restaurant(restaurant)
-          .description(reviewReq.getDescription())
-          .photo(reviewReq.getPhoto())
-          .score(reviewReq.getScore())
+          .description(description)
+          .photo(photo)
+          .score(score)
           .build();
     }
 
