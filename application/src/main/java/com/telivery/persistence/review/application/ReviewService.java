@@ -31,7 +31,7 @@ public class ReviewService {
   }
 
   @Transactional
-  public ReviewRes save(User user, Restaurant restaurant, Order order, ReviewReq reviewReq) {
+  public ReviewRes create(User user, Restaurant restaurant, Order order, ReviewReq reviewReq) {
     // DESCRIBE: 리뷰 생성
     Review review = reviewReq.toEntity(user, restaurant, order);
     reviewRepository.save(review);

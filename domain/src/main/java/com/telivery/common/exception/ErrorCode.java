@@ -32,7 +32,7 @@ public enum ErrorCode {
 
     /* Order, Order_list, Order_menu */
     ORDER_ID_NOT_FOUND(-500, "존재하지 않는 주문 입니다."),
-    IS_NOT_USER_ORDER(-501, "요청한 유저의 리뷰가 아닙니다.");
+    IS_NOT_USER_ORDER(-501, "요청한 유저의 주문이 아닙니다.");
 
 
     private final int code;
