@@ -10,6 +10,7 @@ import com.telivery.persistence.review.dao.ReviewRepository;
 import com.telivery.persistence.review.dto.ReviewDTO.ReviewReq;
 import com.telivery.persistence.review.dto.ReviewDTO.ReviewRes;
 import com.telivery.persistence.review.entity.Review;
+import com.telivery.persistence.review.exception.OrderReviewAlreadyExistsException;
 import com.telivery.persistence.user.entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,15 @@ public class ReviewService {
     return reviewRepository.countByRestaurantId(restaurantId);
   }
 
+  public boolean isExistedByOrder(Order order) {
+    return reviewRepository.existsByOrder(order);
+  }
+
   @Transactional
   public ReviewRes create(User user, Restaurant restaurant, Order order, ReviewReq reviewReq) {
+    // DESCRIBE: 요청 주문에 대해 이미 리뷰 남겼는지 확인
+    if (isExistedByOrder(order)) throw new OrderReviewAlreadyExistsException();
+
     // DESCRIBE: 리뷰 생성
     Review review = reviewReq.toEntity(user, restaurant, order);
     reviewRepository.save(review);
