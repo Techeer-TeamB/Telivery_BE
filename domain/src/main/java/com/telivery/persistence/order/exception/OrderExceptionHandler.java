@@ -1,7 +1,6 @@
-package com.telivery.persistence.restaurant.exception;
+package com.telivery.persistence.order.exception;
 
 import com.telivery.common.response.ErrorResponse;
-import com.telivery.persistence.menu.exception.MenuIdNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -10,13 +9,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
 @RestControllerAdvice
-public class RestaurantExceptionHandler {
+public class OrderExceptionHandler {
 
-  // restaurant pk가 존재하지 않을 경우의 exception
+  // order pk가 존재하지 않을 경우의 exception
   @ResponseStatus(value = HttpStatus.NOT_FOUND)
-  @ExceptionHandler(RestaurantIdNotFoundException.class)
-  public ErrorResponse handleRestaurantIdNotFoundException(RestaurantIdNotFoundException ex) {
-    log.info("restaurant id not found exception", ex);
+  @ExceptionHandler(OrderIdNotFoundException.class)
+  public ErrorResponse handleOrderIdNotFoundException(OrderIdNotFoundException ex) {
+    log.info("order id not found exception", ex);
     return new ErrorResponse(ex.getErrorCode());
   }
 
