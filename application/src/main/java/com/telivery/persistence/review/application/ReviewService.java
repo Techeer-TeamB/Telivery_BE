@@ -54,7 +54,7 @@ public class ReviewService {
     if (!orderMenus.isEmpty()) menuList = orderMenus.stream().map(OrderMenu::getName).collect(
         Collectors.toList());
 
-    return new ReviewRes(review, menuList);
+    return new ReviewRes(review, menuList, restaurant.getScore());
   }
 
 }
