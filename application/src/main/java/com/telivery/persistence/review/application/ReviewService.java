@@ -30,8 +30,8 @@ public class ReviewService {
     return reviewRepository.countByRestaurantId(restaurantId);
   }
 
-  @Transactional(readOnly = true)
-  public ReviewRes create(User user, Restaurant restaurant, Order order, ReviewReq reviewReq) {
+  @Transactional
+  public ReviewRes save(User user, Restaurant restaurant, Order order, ReviewReq reviewReq) {
     // DESCRIBE: 리뷰 생성
     Review review = reviewReq.toEntity(user, restaurant, order);
     reviewRepository.save(review);

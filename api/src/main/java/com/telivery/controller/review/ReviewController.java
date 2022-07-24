@@ -37,8 +37,8 @@ public class ReviewController {
       @RequestBody final ReviewReq reviewReq
   ) {
     Restaurant restaurant = restaurantService.findById(restaurantId);
-    Order order = orderService.findByIdAndUser(orderId, user.getId());
-    return new ResponseEntity<>(reviewService.create(user, restaurant, order, reviewReq), HttpStatus.OK);
+    Order order = orderService.findByIdAndUser(orderId, user);
+    return new ResponseEntity<>(reviewService.save(user, restaurant, order, reviewReq), HttpStatus.OK);
   }
 
 }
