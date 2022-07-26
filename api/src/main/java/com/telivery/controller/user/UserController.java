@@ -1,5 +1,8 @@
 package com.telivery.controller.user;
 
+import com.telivery.persistence.user.UserService;
+import com.telivery.persistence.user.dto.UserInfoDto;
+import com.telivery.persistence.user.entity.User;
 import com.telivery.persistence.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,17 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("/api/user")
+@RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController {
 
-    // 사용 예시입니다.
-    // 실제 API 개발 할 때는 generic을 리턴 DTO 등으로 대체합니다.
-    @GetMapping(value = "/{userId}")
-    public ResponseEntity<?> test (
-            @PathVariable final long userId
+    private final UserService userService;
+
+    @GetMapping(value = "/info")
+    public ResponseEntity<UserInfoDto> test (
+        @CurrentUser final User user
     ) {
-        if (userId > 10) throw new UserNotFoundException();
-        return new ResponseEntity<>("안녕 나는 exception 테스트용 컨트롤러야", HttpStatus.OK);
+        return new ResponseEntity<>(new UserInfoDto(user), HttpStatus.OK);
     }
 }
