@@ -35,7 +35,8 @@ public enum ErrorCode {
     IS_NOT_USER_ORDER(-501, "요청한 유저의 주문이 아닙니다."),
 
     /* Review */
-    ORDER_REVIEW_ALREADY_EXISTS(-600, "요청 주문에 대한 리뷰가 이미 존재합니다.");
+    ORDER_REVIEW_ALREADY_EXISTS(-600, "요청 주문에 대한 리뷰가 이미 존재합니다."),
+    USER_REVIEW_NOT_FOUND(-601, "요청 유저가 작성한 리뷰가 존재하지 않습니다."),;
 
 
     private final int code;

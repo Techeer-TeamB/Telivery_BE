@@ -11,6 +11,7 @@ import com.telivery.persistence.review.dto.ReviewDTO.ReviewReq;
 import com.telivery.persistence.review.dto.ReviewDTO.ReviewRes;
 import com.telivery.persistence.review.entity.Review;
 import com.telivery.persistence.review.exception.OrderReviewAlreadyExistsException;
+import com.telivery.persistence.review.exception.UserReviewNotFoundException;
 import com.telivery.persistence.user.entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,11 @@ public class ReviewService {
     return reviewRepository.existsByOrder(order);
   }
 
-
+  public List<Review> findAllByUser(User user) {
+    List<Review> reviewList = reviewRepository.findAllByUser(user);
+    if (reviewList.isEmpty()) throw new UserReviewNotFoundException();
+    return reviewList;
+  }
 
   @Transactional
   public ReviewRes create(User user, Restaurant restaurant, Order order, ReviewReq reviewReq) {
