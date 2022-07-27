@@ -1,7 +1,6 @@
 package com.telivery.persistence.review.dto;
 
 import com.telivery.persistence.review.entity.Review;
-import java.time.LocalDate;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -12,7 +11,7 @@ public class MyReviewDTO {
 
   @Getter
   @NoArgsConstructor(access = AccessLevel.PROTECTED)
-  public class MyReviewRes {
+  public static class MyReviewRes {
 
     private String date;
     private List<MyReviewInfo> reviewList;
@@ -27,7 +26,7 @@ public class MyReviewDTO {
 
   @Getter
   @NoArgsConstructor(access = AccessLevel.PROTECTED)
-  public class MyReviewInfo {
+  public static class MyReviewInfo {
 
     private Float score;
     private String restaurantName;
