@@ -14,11 +14,11 @@ public class MyReviewDTO {
   @NoArgsConstructor(access = AccessLevel.PROTECTED)
   public class MyReviewRes {
 
-    private LocalDate date;
+    private String date;
     private List<MyReviewInfo> reviewList;
 
     @Builder
-    public MyReviewRes(LocalDate date, List<MyReviewInfo> reviewList) {
+    public MyReviewRes(String date, List<MyReviewInfo> reviewList) {
       this.date = date;
       this.reviewList = reviewList;
     }

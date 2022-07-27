@@ -6,13 +6,16 @@ import com.telivery.persistence.order.entity.Order;
 import com.telivery.persistence.restaurant.application.RestaurantService;
 import com.telivery.persistence.restaurant.entity.Restaurant;
 import com.telivery.persistence.review.application.ReviewService;
+import com.telivery.persistence.review.dto.MyReviewDTO.MyReviewRes;
 import com.telivery.persistence.review.dto.ReviewDTO.ReviewReq;
 import com.telivery.persistence.review.dto.ReviewDTO.ReviewRes;
 import com.telivery.persistence.user.entity.User;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +42,13 @@ public class ReviewController {
     Restaurant restaurant = restaurantService.findById(restaurantId);
     Order order = orderService.findByIdAndUser(orderId, user);
     return new ResponseEntity<>(reviewService.create(user, restaurant, order, reviewReq), HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/user/reviews")
+  public ResponseEntity<List<MyReviewRes>> findAllUserReview(
+      @CurrentUser final User user
+  ) {
+    return new ResponseEntity<>(reviewService.findAllUserReviewRes(user), HttpStatus.OK);
   }
 
 }
